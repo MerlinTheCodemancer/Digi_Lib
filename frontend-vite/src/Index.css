@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 260 65% 98%;
+    --foreground: 260 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 260 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 260 25% 15%;
+
+    --primary: 260 90% 25%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 260 25% 95%;
+    --secondary-foreground: 260 90% 25%;
+
+    --muted: 260 25% 95%;
+    --muted-foreground: 260 20% 50%;
+
+    --accent: 40 100% 60%;
+    --accent-foreground: 260 90% 25%;
+
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 260 10% 85%;
+    --input: 260 10% 85%;
+    --ring: 260 90% 25%;
+
+    --radius: 0.5rem;
+  }
+  
+  .dark-mode {
+    --background: 260 30% 10%;
+    --foreground: 260 25% 95%;
+
+    --card: 260 30% 13%;
+    --card-foreground: 260 25% 95%;
+
+    --popover: 260 30% 13%;
+    --popover-foreground: 260 25% 95%;
+
+    --primary: 260 60% 60%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 260 30% 20%;
+    --secondary-foreground: 260 25% 95%;
+
+    --muted: 260 30% 20%;
+    --muted-foreground: 260 20% 70%;
+
+    --accent: 40 70% 50%;
+    --accent-foreground: 260 30% 10%;
+
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 260 30% 25%;
+    --input: 260 30% 25%;
+    --ring: 260 60% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-digimon;
+  }
+  
+  body.dark-mode {
+    @apply bg-digiblue-dark text-white;
+  }
+}
+
+@layer components {
+  .digicard {
+    @apply relative bg-white rounded-lg shadow-md transition-all duration-300 hover:shadow-xl overflow-hidden;
+  }
+  
+  .dark-mode .digicard {
+    @apply bg-digiblue text-white border border-white/10;
+  }
+  
+  .digicard-header {
+    @apply bg-digiorange text-white font-bold text-lg py-2 px-4;
+  }
+  
+  .dark-mode .digicard-header {
+    @apply bg-digipurple;
+  }
+  
+  .digicard-content {
+    @apply p-4;
+  }
+  
+  .dark-mode .digicard-content {
+    @apply bg-digiblue;
+  }
+  
+  .nav-link {
+    @apply relative px-3 py-2 rounded-md text-foreground hover:text-digipurple transition-colors duration-200 
+    after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-digipurple after:left-0 after:right-0 
+    after:bottom-0 after:mx-auto after:transition-all hover:after:w-full;
+  }
+  
+  .dark-mode .nav-link {
+    @apply text-white hover:text-digipurple-light after:bg-digipurple-light;
+  }
+  
+  .active-nav-link {
+    @apply text-digipurple after:w-full;
+  }
+  
+  .dark-mode .active-nav-link {
+    @apply text-digipurple-light;
+  }
+  
+  .search-input {
+    @apply w-full rounded-full border border-border bg-white px-4 py-2 text-sm focus:outline-none focus:ring-2 
+    focus:ring-digipurple focus:border-transparent transition-all duration-200;
+  }
+  
+  .dark-mode .search-input {
+    @apply bg-digiblue-dark border-white/10 text-white placeholder-gray-400;
+  }
+  
+  .digi-btn {
+    @apply px-4 py-2 rounded-md font-medium transition-all duration-200 
+    focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  
+  .digi-btn-primary {
+    @apply bg-digipurple text-white hover:bg-digipurple-light focus:ring-digipurple;
+  }
+  
+  .dark-mode .digi-btn-primary {
+    @apply bg-digipurple-light hover:bg-digipurple focus:ring-digipurple-light;
+  }
+  
+  .digi-btn-secondary {
+    @apply bg-digiorange text-white hover:bg-digiorange-light focus:ring-digiorange;
+  }
+  
+  .dark-mode .digi-btn-secondary {
+    @apply bg-digiorange-dark hover:bg-digiorange focus:ring-digiorange-dark;
+  }
+  
+  .digi-btn-ghost {
+    @apply bg-transparent text-foreground hover:bg-secondary focus:ring-secondary;
+  }
+  
+  .dark-mode .digi-btn-ghost {
+    @apply text-white hover:bg-digiblue;
+  }
+  
+  /* Pokemon 2011 inspired styles */
+  .pokemon-2011 {
+    @apply bg-gradient-to-b from-amber-100 to-amber-200 p-1 border border-amber-300 rounded-lg;
+  }
+  
+  .dark-mode .pokemon-2011 {
+    @apply bg-gradient-to-b from-gray-800 to-gray-900 border-gray-700;
+  }
+  
+  .legends-arceus-box {
+    @apply bg-amber-50 border border-amber-200 rounded-lg p-3 shadow-inner;
+  }
+  
+  .dark-mode .legends-arceus-box {
+    @apply bg-gray-800 border-gray-700;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .digicard {
+    @apply text-sm;
+  }
+  
+  .digicard-header {
+    @apply py-1 px-3 text-base;
+  }
+  
+  .digicard-content {
+    @apply p-3;
+  }
+}
+
+@media (min-width: 768px) {
+  .pokemon-2011-container {
+    @apply grid grid-cols-[250px_1fr];
+  }
+}
